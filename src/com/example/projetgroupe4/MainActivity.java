@@ -15,6 +15,7 @@ public class MainActivity extends ActionBarActivity {
 		
 		//test Romain A
 		//test Romain B
+		//test Romain A2
 	}
 
 	@Override
