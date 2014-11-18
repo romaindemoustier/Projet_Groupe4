@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">ProjetGroupe4</string>
+    <string name="app_name">Vote</string>
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">options</string>
+    <string name="title">Connection</string>
+    <string name="t_eleve">eleve</string>
+    <string name="login">Nom utilisateur</string>
+    <string name="password">mot de passe</string>
+    
+    
+    
 
 </resources>
