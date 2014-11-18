@@ -2,9 +2,7 @@ package Modele;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 
 public class ReponsesDB extends Reponses implements CRUD {
 
@@ -30,7 +28,7 @@ public class ReponsesDB extends Reponses implements CRUD {
     public void create() throws Exception {
         CallableStatement c;
         try {
-            String req = "call chambrecreation(?,?,?,?)";
+            String req = "call create_reponse(?,?,?,?)";
             c = dbConnect.prepareCall(req);
             c.setInt(1, id_reponses);
             c.setString(2, reponses);
@@ -45,7 +43,7 @@ public class ReponsesDB extends Reponses implements CRUD {
     public void read() throws Exception {
         CallableStatement c;
         try {
-            String req = "{?=call chambrelecture(?)}";
+            String req = "{?=call read_reponse(?)}";
             c = dbConnect.prepareCall(req);
             c.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
             c.setInt(2, id_reponses);
@@ -55,7 +53,7 @@ public class ReponsesDB extends Reponses implements CRUD {
                 this.id_reponses = rs.getInt("ID_USER");
                 this.reponses = rs.getString("LOGIN");
             } else {
-                throw new Exception("Numero de chambre inconnu");
+                throw new Exception("Id de réponse inconnu");
             }
             c.close();
         } catch (Exception e) {
@@ -67,7 +65,7 @@ public class ReponsesDB extends Reponses implements CRUD {
     public void update() throws Exception {
         CallableStatement c;
         try {
-            String req = "call chambremaj(?,?,?,?)";
+            String req = "call reponse_maj(?,?,?,?)";
             c = dbConnect.prepareCall(req);
             c.setInt(1, id_reponses);
             c.setString(2, reponses);
@@ -82,7 +80,7 @@ public class ReponsesDB extends Reponses implements CRUD {
     public void delete() throws Exception {
         CallableStatement c;
         try {
-            String req = "call chambresupprime(?)";
+            String req = "call reponse_supp(?)";
             c = dbConnect.prepareCall(req);
             c.setInt(1, id_reponses);
             c.executeUpdate();

@@ -2,9 +2,7 @@ package Modele;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 
 public class UtilisateurDB extends Utilisateur implements CRUD {
 
@@ -30,7 +28,7 @@ public class UtilisateurDB extends Utilisateur implements CRUD {
     public void create() throws Exception {
         CallableStatement c;
         try {
-            String req = "call chambrecreation(?,?,?,?)";
+            String req = "call create_utilisateur(?,?,?,?)";
             c = dbConnect.prepareCall(req);
             c.setInt(1, id_user);
             c.setString(2, login);
@@ -47,7 +45,7 @@ public class UtilisateurDB extends Utilisateur implements CRUD {
     public void read() throws Exception {
         CallableStatement c;
         try {
-            String req = "{?=call chambrelecture(?)}";
+            String req = "{?=call read_utilisateur(?)}";
             c = dbConnect.prepareCall(req);
             c.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
             c.setInt(2, id_user);
@@ -71,7 +69,7 @@ public class UtilisateurDB extends Utilisateur implements CRUD {
     public void update() throws Exception {
         CallableStatement c;
         try {
-            String req = "call chambremaj(?,?,?,?)";
+            String req = "call utilisateur_maj(?,?,?,?)";
             c = dbConnect.prepareCall(req);
             c.setInt(1, id_user);
             c.setString(2, login);
@@ -88,7 +86,7 @@ public class UtilisateurDB extends Utilisateur implements CRUD {
     public void delete() throws Exception {
         CallableStatement c;
         try {
-            String req = "call chambresupprime(?)";
+            String req = "call utilisateur_supp(?)";
             c = dbConnect.prepareCall(req);
             c.setInt(1, id_user);
             c.executeUpdate();

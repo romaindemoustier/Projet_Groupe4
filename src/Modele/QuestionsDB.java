@@ -2,9 +2,7 @@ package Modele;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 
 public class QuestionsDB extends Questions implements CRUD {
 
@@ -30,7 +28,7 @@ public class QuestionsDB extends Questions implements CRUD {
     public void create() throws Exception {
         CallableStatement c;
         try {
-            String req = "call questionscreation(?,?,?,?)";
+            String req = "call create_question(?,?,?,?)";
             c = dbConnect.prepareCall(req);
             c.setInt(1, id_questions);
             c.setString(2, questions);
@@ -47,7 +45,7 @@ public class QuestionsDB extends Questions implements CRUD {
     public void read() throws Exception {
         CallableStatement c;
         try {
-            String req = "{?=call questionslecture(?)}";
+            String req = "{?=call read_question(?)}";
             c = dbConnect.prepareCall(req);
             c.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
             c.setInt(2, id_questions);
@@ -59,7 +57,7 @@ public class QuestionsDB extends Questions implements CRUD {
                 this.verrouillage = rs.getBoolean("VERROUILLAGE");
                 this.professeur = rs.getBoolean("PROFESSEUR");
             } else {
-                throw new Exception("Numero de chambre inconnu");
+                throw new Exception("Id de question inconnu");
             }
             c.close();
         } catch (Exception e) {
@@ -71,7 +69,7 @@ public class QuestionsDB extends Questions implements CRUD {
     public void update() throws Exception {
         CallableStatement c;
         try {
-            String req = "call questionsmaj(?,?,?,?)";
+            String req = "call question_maj(?,?,?,?)";
             c = dbConnect.prepareCall(req);
             c.setInt(1, id_questions);
             c.setString(2, questions);
@@ -88,7 +86,7 @@ public class QuestionsDB extends Questions implements CRUD {
     public void delete() throws Exception {
         CallableStatement c;
         try {
-            String req = "call questionssupprime(?)";
+            String req = "call question_supp(?)";
             c = dbConnect.prepareCall(req);
             c.setInt(1, id_questions);
             c.executeUpdate();
