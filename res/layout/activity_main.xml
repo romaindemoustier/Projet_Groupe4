@@ -25,21 +25,12 @@
         android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/t_eleve"
+        android:layout_alignLeft="@+id/login"
         android:layout_below="@+id/login"
+        android:layout_marginTop="14dp"
         android:ems="10"
         android:inputType="textPassword"
-        android:text="@string/password" />
-
-    <EditText
-        android:id="@+id/login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/t_eleve"
-        android:layout_below="@+id/t_eleve"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:text="@string/login" >
+        android:text="@string/password_E" >
 
         <requestFocus />
     </EditText>
@@ -50,9 +41,63 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/titre"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginLeft="31dp"
+        android:layout_marginTop="30dp"
         android:text="@string/t_eleve"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/t_eleve"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:text="@string/login_E" />
+
+    <TextView
+        android:id="@+id/t_professeur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/t_eleve"
+        android:layout_below="@+id/password"
+        android:layout_marginTop="72dp"
+        android:text="@string/t_professeur"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/B_inscr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/password"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="18dp"
+        android:layout_toRightOf="@+id/t_ajout_q"
+        android:background="@color/red"
+        android:text="@string/B_inscr" />
+
+    <EditText
+        android:id="@+id/login_P"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/t_professeur"
+        android:layout_below="@+id/t_professeur"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:text="@string/login_P" />
+
+    <EditText
+        android:id="@+id/password_P"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/password"
+        android:layout_below="@+id/login_P"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:text="@string/password_P" />
 
 </RelativeLayout>
