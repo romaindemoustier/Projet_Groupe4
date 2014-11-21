@@ -4,7 +4,7 @@ public class Questions {
 	protected int id_questions;
 	protected String questions;
 	protected boolean verrouillage;
-	protected boolean professeur;
+	protected int professeur;
 
 	public Questions() {
 		
@@ -14,7 +14,7 @@ public class Questions {
 		this.id_questions = id_questions;
 	}
 	
-	public Questions(int id_questions, String questions, boolean verrouillage, boolean professeur) {
+	public Questions(int id_questions, String questions, boolean verrouillage, int professeur) {
 		super();
 		this.id_questions = id_questions;
 		this.questions = questions;
@@ -46,11 +46,11 @@ public class Questions {
 		this.verrouillage = verrouillage;
 	}
 	
-	public boolean getProfesseur() {
+	public int getProfesseur() {
 		return professeur;
 	}
 
-	public void setProfesseur(boolean professeur) {
+	public void setProfesseur(int professeur) {
 		this.professeur = professeur;
 	}
 }

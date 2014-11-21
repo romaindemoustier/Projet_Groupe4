@@ -16,8 +16,8 @@ public class UtilisateurDB extends Utilisateur implements CRUD {
         super(id_user);
     }
 
-    public UtilisateurDB(int id_user, String login, String password, boolean estprof) {
-        super(id_user, login, password,estprof);
+    public UtilisateurDB(String login, String password, boolean estprof) {
+        super(login, password,estprof);
     }
 
     public static void setConnection(Connection C) {
@@ -50,14 +50,14 @@ public class UtilisateurDB extends Utilisateur implements CRUD {
             c.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
             c.setInt(2, id_user);
             c.executeQuery();
-            ResultSet rs = (ResultSet) c.getObject(1);
+            ResultSet rs = (ResultSet) c.getObject(1);System.out.println("lE PROBLEME EST ICI");
             if (rs.next()) {
                 this.id_user = rs.getInt("ID_USER");
                 this.login = rs.getString("LOGIN");
                 this.password = rs.getString("PASSWORD");
                 this.estprof = rs.getBoolean("ESTPROF");
             } else {
-                throw new Exception("Numero de chambre inconnu");
+                throw new Exception("Numero d'utilisateur inconnu");
             }
             c.close();
         } catch (Exception e) {

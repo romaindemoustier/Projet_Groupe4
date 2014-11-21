@@ -16,7 +16,7 @@ public class QuestionsDB extends Questions implements CRUD {
         super(id_questions);
     }
 
-    public QuestionsDB(int id_questions, String questions, boolean verrouillage, boolean professeur) {
+    public QuestionsDB(int id_questions, String questions, boolean verrouillage, int professeur) {
         super(id_questions,questions,verrouillage,professeur);
     }
 
@@ -33,7 +33,7 @@ public class QuestionsDB extends Questions implements CRUD {
             c.setInt(1, id_questions);
             c.setString(2, questions);
             c.setBoolean(3, verrouillage);
-            c.setBoolean(4, professeur);
+            c.setInt(4, professeur);
             c.executeUpdate();
             c.close();
         } catch (Exception e) {
@@ -55,7 +55,7 @@ public class QuestionsDB extends Questions implements CRUD {
                 this.id_questions = rs.getInt("ID_QUESTIONS");
                 this.questions = rs.getString("QUESTIONS");
                 this.verrouillage = rs.getBoolean("VERROUILLAGE");
-                this.professeur = rs.getBoolean("PROFESSEUR");
+                this.professeur = rs.getInt("PROFESSEUR");
             } else {
                 throw new Exception("Id de question inconnu");
             }
@@ -74,7 +74,7 @@ public class QuestionsDB extends Questions implements CRUD {
             c.setInt(1, id_questions);
             c.setString(2, questions);
             c.setBoolean(3, verrouillage);
-            c.setBoolean(4, professeur);
+            c.setInt(4, professeur);
             c.executeUpdate();
             c.close();
         } catch (Exception e) {

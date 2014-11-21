@@ -14,9 +14,8 @@ public class Utilisateur {
 		this.id_user = id_user;
 	}
 	
-	public Utilisateur(int id_user, String login, String password, boolean estprof) {
+	public Utilisateur(String login, String password, boolean estprof) {
 		super();
-		this.id_user = id_user;
 		this.login = login;
 		this.password = password;
 		this.estprof = estprof;

@@ -16,8 +16,8 @@ public class ReponsesDB extends Reponses implements CRUD {
         super(id_reponses);
     }
 
-    public ReponsesDB(int id_reponses, String reponses) {
-        super(id_reponses,reponses);
+    public ReponsesDB(String reponses, int id_questions) {
+        super(reponses, id_questions);
     }
 
     public static void setConnection(Connection C) {
@@ -28,10 +28,11 @@ public class ReponsesDB extends Reponses implements CRUD {
     public void create() throws Exception {
         CallableStatement c;
         try {
-            String req = "call create_reponse(?,?,?,?)";
+            String req = "call create_reponse(?,?,?)";
             c = dbConnect.prepareCall(req);
             c.setInt(1, id_reponses);
             c.setString(2, reponses);
+            c.setInt(3, id_questions);
             c.executeUpdate();
             c.close();
         } catch (Exception e) {
@@ -48,10 +49,11 @@ public class ReponsesDB extends Reponses implements CRUD {
             c.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
             c.setInt(2, id_reponses);
             c.executeQuery();
-            ResultSet rs = (ResultSet) c.getObject(1);
+            ResultSet rs = (ResultSet) c.getObject(1);System.out.println("lE PROBLEME EST ICI");
             if (rs.next()) {
-                this.id_reponses = rs.getInt("ID_USER");
+                this.id_reponses = rs.getInt("ID_REPONSES");
                 this.reponses = rs.getString("LOGIN");
+                this.id_questions = rs.getInt("ID_QUESTIONS");System.out.println("PAS LA");
             } else {
                 throw new Exception("Id de réponse inconnu");
             }
@@ -65,10 +67,11 @@ public class ReponsesDB extends Reponses implements CRUD {
     public void update() throws Exception {
         CallableStatement c;
         try {
-            String req = "call reponse_maj(?,?,?,?)";
+            String req = "call reponse_maj(?,?,?)";
             c = dbConnect.prepareCall(req);
             c.setInt(1, id_reponses);
             c.setString(2, reponses);
+            c.setInt(3, id_questions);
             c.executeUpdate();
             c.close();
         } catch (Exception e) {
