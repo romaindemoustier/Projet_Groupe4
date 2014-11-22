@@ -37,7 +37,7 @@ public class UtilisateurTest {
         
         try {
             System.out.println("TEST MISE A JOUR UTILISATEUR");
-            util1 = new UtilisateurDB("Gerard", "Romain",false);
+            util1 = new UtilisateurDB("Gerard1", "Romain",false);
             util1.create();
             int numero = util1.getId_user();
             util1.setLogin("Roger");
@@ -59,7 +59,7 @@ public class UtilisateurTest {
 
         try {
             System.out.println("TEST D'EFFACEMENT FRUCTUEUX UTILISATEUR");
-            util1 = new UtilisateurDB("Gerard", "Romain", false);
+            util1 = new UtilisateurDB("Gerard2", "Romain", false);
             util1.create();
             int numero = util1.getId_user();
             util1.delete();
@@ -76,19 +76,18 @@ public class UtilisateurTest {
         	util1.delete();
         } catch (Exception e) {
         }
-        
-        /*
+
         try {
             System.out.println("TEST D'AJOUT doublon");
-            util1 = new UtilisateurDB(76,"Gerard", "Romain",false);
+            util1 = new UtilisateurDB("Gerard", "Romain",false);
             util1.create();
             int numero = util1.getId_user();
             util2 = new UtilisateurDB(numero);
             util2.read();
             System.out.println("utilisateur 2 = " + util2);
-            System.out.println("OK");
+            System.out.println("NON CA NE DOIT PAS ETRE AJOUTER");
         } catch (Exception e) {
-            System.out.println("BAD Exception d'Ajout Utilisateur " + e);
+            System.out.println("Test d'ajout de doublon raté, opération réussi");
 
         }
         try {
@@ -97,6 +96,5 @@ public class UtilisateurTest {
 
         }
         
-*/
     }
 }

@@ -14,9 +14,8 @@ public class Questions {
 		this.id_questions = id_questions;
 	}
 	
-	public Questions(int id_questions, String questions, boolean verrouillage, int professeur) {
+	public Questions(String questions, boolean verrouillage, int professeur) {
 		super();
-		this.id_questions = id_questions;
 		this.questions = questions;
 		this.verrouillage = verrouillage;
 		this.professeur = professeur;

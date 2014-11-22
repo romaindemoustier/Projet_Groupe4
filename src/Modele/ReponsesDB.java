@@ -2,6 +2,7 @@ package Modele;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class ReponsesDB extends Reponses implements CRUD {
@@ -42,26 +43,27 @@ public class ReponsesDB extends Reponses implements CRUD {
 
     @Override
     public void read() throws Exception {
-        CallableStatement c;
-        try {
-            String req = "{?=call read_reponse(?)}";
-            c = dbConnect.prepareCall(req);
-            c.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
-            c.setInt(2, id_reponses);
-            c.executeQuery();
-            ResultSet rs = (ResultSet) c.getObject(1);System.out.println("lE PROBLEME EST ICI");
-            if (rs.next()) {
-                this.id_reponses = rs.getInt("ID_REPONSES");
-                this.reponses = rs.getString("LOGIN");
-                this.id_questions = rs.getInt("ID_QUESTIONS");System.out.println("PAS LA");
-            } else {
-                throw new Exception("Id de réponse inconnu");
-            }
-            c.close();
-        } catch (Exception e) {
-            throw new Exception("Erreur " + e.getMessage());
-        }
-    }
+		String query = "SELECT * FROM REPONSES WHERE ID_REPONSES=?";
+		PreparedStatement cstmt = null;
+		try {
+			cstmt = dbConnect.prepareStatement(query);
+			cstmt.setInt(1, this.id_reponses);
+			ResultSet rs = cstmt.executeQuery();
+			while (rs.next()) {
+				this.reponses = rs.getString("reponses");
+				this.id_questions = rs.getInt("id_questions");
+			}
+
+		} catch (Exception e) {
+			throw new Exception("Erreur " + e.getMessage());
+		} finally {
+			try {
+				cstmt.close();
+			} catch (Exception e) {
+
+			}
+		}
+	}
 
     @Override
     public void update() throws Exception {

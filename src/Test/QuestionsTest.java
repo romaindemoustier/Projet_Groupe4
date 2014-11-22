@@ -1,7 +1,9 @@
 package Test;
 
 import Modele.QuestionsDB;
+import Modele.ReponsesDB;
 import MyConnection.DBConnection;
+
 import java.sql.Connection;
 
 public class QuestionsTest {
@@ -18,7 +20,7 @@ public class QuestionsTest {
 
         try {
             System.out.println("TEST D'AJOUT QUESTIONS");
-            ques1 = new QuestionsDB(100, "Romain",false,3);
+            ques1 = new QuestionsDB("Question",false,3);
             ques1.create();
             int numero = ques1.getId_questions();
             ques2 = new QuestionsDB(numero);
@@ -37,12 +39,11 @@ public class QuestionsTest {
         
         try {
             System.out.println("TEST MISE A JOUR QUESTIONS");
-            ques1 = new QuestionsDB(100, "Romain",false,3);
+            ques1 = new QuestionsDB("Question1",false,3);
             ques1.create();
             int numero = ques1.getId_questions();
-            ques1.setQuestions("Roger");
+            ques1.setQuestions("Question2");
             ques1.setVerrouillage(false);
-            ques1.setProfesseur(3);
             ques1.update();
             ques2 = new QuestionsDB(numero);
             ques2.read();
@@ -60,7 +61,7 @@ public class QuestionsTest {
 
         try {
             System.out.println("TEST D'EFFACEMENT FRUCTUEUX QUESTIONS");
-            ques1 = new QuestionsDB(100, "Roger",false,3);
+            ques1 = new QuestionsDB("Question3",false,3);
             ques1.create();
             int numero = ques1.getId_questions();
             ques1.delete();
@@ -77,11 +78,9 @@ public class QuestionsTest {
         	ques1.delete();
         } catch (Exception e) {
         }
-        
-        /*
         try {
             System.out.println("TEST D'AJOUT doublon");
-            ques1 = new QuestionsDB(100, "Romain",false,3);
+            ques1 = new QuestionsDB("Question1",false,3);
             ques1.create();
             int numero = ques1.getId_questions();
             ques2 = new QuestionsDB(numero);
@@ -89,15 +88,15 @@ public class QuestionsTest {
             System.out.println("question 2 = " + ques2);
             System.out.println("OK");
         } catch (Exception e) {
-            System.out.println("BAD Exception d'Ajout Questions " + e);
+            System.out.println("La question existe déjà");
 
         }
         try {
         	ques1.delete();
         } catch (Exception e) {
 
-        }*/
-        
+        }
+                
 
     }
 }
