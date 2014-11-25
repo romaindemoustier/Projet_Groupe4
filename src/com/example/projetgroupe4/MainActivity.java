@@ -11,11 +11,8 @@ public class MainActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-		
-		//test Romain A
-		//test Romain B
-		//test Romain A
+
+		//test Romain G
 	}
 
 	@Override
