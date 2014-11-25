@@ -1,7 +1,6 @@
 package Test;
 
 import Modele.QuestionsDB;
-import Modele.ReponsesDB;
 import MyConnection.DBConnection;
 
 import java.sql.Connection;

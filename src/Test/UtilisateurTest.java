@@ -2,6 +2,7 @@ package Test;
 
 import Modele.UtilisateurDB;
 import MyConnection.DBConnection;
+
 import java.sql.Connection;
 
 public class UtilisateurTest {
@@ -94,6 +95,22 @@ public class UtilisateurTest {
         	util1.delete();
         } catch (Exception e) {
 
+        }
+        
+        try {
+            System.out.println("TEST D'EFFACEMENT D'UTILISATEUR AYANT REPONDU A UNE QUESTION ");
+            util2 = new UtilisateurDB(1);
+            util2.delete();
+            System.out.println("UTILISATEUR 2 =" + util2);
+            System.out.println("BAD");
+
+        } catch (Exception e) {
+            System.out.println("Vous ne pouvez pas effacer cet utilisateur, il est déjà impliqué dans une question");
+        }
+
+        try {
+        	util1.delete();
+        } catch (Exception e) {
         }
         
     }

@@ -1,6 +1,5 @@
 package Test;
 
-import Modele.QuestionsDB;
 import Modele.ReponsesDB;
 import MyConnection.DBConnection;
 
@@ -79,7 +78,7 @@ public class ReponsesTest {
         }
         
         try {
-            System.out.println("TEST D'AJOUT REPONSES");
+            System.out.println("TEST D'AJOUT DOUBLON");
             rep1 = new ReponsesDB("Rep1",40);
             rep1.create();
             int numero = rep1.getId_reponses();
@@ -88,7 +87,26 @@ public class ReponsesTest {
             System.out.println("reponse 2 = " + rep2);
             System.out.println("OK");
         } catch (Exception e) {
-            System.out.println("La question existe déjà");
+            System.out.println("La reponse existe déjà");
+
+        }
+        try {
+        	rep1.delete();
+        } catch (Exception e) {
+
+        }
+        
+        try {
+            System.out.println("TEST D'AJOUT QUESTION N'EXISTANT PAS");
+            rep1 = new ReponsesDB("Rep5",5);
+            rep1.create();
+            int numero = rep1.getId_reponses();
+            rep2 = new ReponsesDB(numero);
+            rep2.read();
+            System.out.println("reponse 2 = " + rep2);
+            System.out.println("OK");
+        } catch (Exception e) {
+            System.out.println("La question n'existe pas");
 
         }
         try {
