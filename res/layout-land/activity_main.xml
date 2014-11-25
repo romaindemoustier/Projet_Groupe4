@@ -10,19 +10,11 @@
     tools:context="com.example.projetgroupe4.MainActivity" >
 
     <EditText
-        android:id="@+id/login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/password"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:text="@string/login_E" />
-
-    <EditText
         android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_alignLeft="@+id/login"
+        android:layout_alignRight="@+id/login"
         android:layout_centerVertical="true"
         android:ems="10"
         android:inputType="textPassword"
@@ -43,11 +35,21 @@
         android:id="@+id/titre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/login"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="46dp"
         android:text="@string/title"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/password"
+        android:ems="10"
+        android:text="@string/login_E"
+        android:width="500dp" >
+
+        <requestFocus />
+    </EditText>
 
 </RelativeLayout>
