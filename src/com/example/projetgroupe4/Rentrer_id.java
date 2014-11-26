@@ -49,7 +49,7 @@ public class Rentrer_id extends ActionBarActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.rentrer_id, menu);
+		getMenuInflater().inflate(R.menu.Rentrer_id, menu);
 		return true;
 	}
 

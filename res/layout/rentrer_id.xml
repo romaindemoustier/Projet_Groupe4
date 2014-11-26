@@ -24,7 +24,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/texte1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView2"
@@ -35,21 +35,21 @@
     </EditText>
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/valid_id_q"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="18dp"
-        android:layout_toLeftOf="@+id/editText1"
+        android:layout_toLeftOf="@+id/texte1"
         android:text="Valider" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/deco_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button1"
-        android:layout_alignBottom="@+id/button1"
-        android:layout_alignRight="@+id/editText1"
+        android:layout_alignBaseline="@+id/valid_id_q"
+        android:layout_alignBottom="@+id/valid_id_q"
+        android:layout_alignRight="@+id/texte1"
         android:text="Déconnexion" />
 
 </RelativeLayout>
