@@ -29,7 +29,7 @@ public class Rentrer_id extends ActionBarActivity {
 	QuestionsDB questions = new QuestionsDB();
 	UtilisateurDB utilisateur = new UtilisateurDB();
 	
-	
+	public static final String ID_USER="id_user";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,6 @@ public class Rentrer_id extends ActionBarActivity {
 		valider=(Button)findViewById(R.id.valid_id_q);
 		deco=(Button)findViewById(R.id.deco_id);
 		ed1=(EditText) findViewById(R.id.texte1);
-		ed2=(EditText) findViewById(R.id.texte2);
 
 		//bad_id=(TextView)findViewById(R.id.id
 		
@@ -124,14 +123,14 @@ public class Rentrer_id extends ActionBarActivity {
 						return true;
 					}
 
-					protected void onPostExecute(Boolean result
+					protected void onPostExecute(Boolean result)
 							{
 						 super.onPostExecute(result);
 						 if (result)
 						 {
 							 
-							 Toast.makeText(Connect.this,"Connexion à votre compte...",Toast.LENGTH_SHORT).show();
-							 Intent i = new Intent(Connect.this,Repondre_question.class);	
+							 Toast.makeText(Rentrer_id.this,"Connexion à votre compte...",Toast.LENGTH_SHORT).show();
+							 Intent i = new Intent(Rentrer_id.this,Repondre_question.class);	
 			                 i.putExtra(ID_USER, utilisateur); 
 							 startActivity(i);
 							 finish();
@@ -139,7 +138,7 @@ public class Rentrer_id extends ActionBarActivity {
 					     else 
 					     {
 					    	 mdp.setText("");
-					    	 Toast.makeText(Connect.this,resultat,Toast.LENGTH_SHORT).show();
+					    	 Toast.makeText(Rentrer_id.this,resultat,Toast.LENGTH_SHORT).show();
 					     }
 						
 						 
