@@ -18,5 +18,7 @@
     <string name="t_quest">Veuillez saisir une question :</string>
     <string name="t_rep">Réponses :</string>
     <string name="title_activity_test">Test</string>
+    <string name="title_activity_rentrer_id">Rentrer_id</string>
+    <string name="title_activity_repondre_question">Repondre_question</string>
 
 </resources>

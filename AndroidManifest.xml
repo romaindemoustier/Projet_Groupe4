@@ -26,6 +26,14 @@
             android:name=".Test"
             android:label="@string/title_activity_test" >
         </activity>
+        <activity
+            android:name=".Rentrer_id"
+            android:label="@string/title_activity_rentrer_id" >
+        </activity>
+        <activity
+            android:name=".Repondre_question"
+            android:label="@string/title_activity_repondre_question" >
+        </activity>
     </application>
 
 </manifest>
