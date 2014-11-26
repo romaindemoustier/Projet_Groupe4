@@ -17,8 +17,6 @@
     <string name="b_supp_q">Supprimer une question</string>
     <string name="t_quest">Veuillez saisir une question :</string>
     <string name="t_rep">Réponses :</string>
-    
-    
-    
+    <string name="title_activity_test">Test</string>
 
 </resources>
