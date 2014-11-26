@@ -1,2 +1,12 @@
 /bin/
 /project.properties
+/proguard-project.txt
+/lint.xml
+/hs_err_pid2068.log
+/hs_err_pid2156.log
+/hs_err_pid756.log
+/libs/
+/gen/
+/.classpath
+/.gitignore
+/.project
