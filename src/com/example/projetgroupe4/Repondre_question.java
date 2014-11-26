@@ -1,9 +1,16 @@
 package com.example.projetgroupe4;
 
+import Modele.QuestionsDB;
+import Modele.UtilisateurDB;
+import MyConnection.DBConnection;
 import android.support.v7.app.ActionBarActivity;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class Repondre_question extends ActionBarActivity {
 
@@ -31,4 +38,88 @@ public class Repondre_question extends ActionBarActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	
+	
+	 class MyAccesDB extends AsyncTask<String,Integer,Boolean> {
+		    private String resultat;
+		    private ProgressDialog pgd=null;
+
+
+					public MyAccesDB(MainActivity pActivity) {
+
+						link(pActivity);
+						// TODO Auto-generated constructor stub
+					}
+
+					private void link(MainActivity pActivity) {
+						// TODO Auto-generated method stub
+
+
+					}
+
+					protected void onPreExecute(){
+						 super.onPreExecute();
+				         pgd=new ProgressDialog(Repondre_question.this);
+						 pgd.setMessage("chargement en cours");
+						 pgd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+			     		 pgd.show();
+
+					}
+
+					@Override
+					protected Boolean doInBackground(String... arg0) {
+
+					   if(con==null){//premier invocation
+						   con = new DBConnection().getConnection();
+					    	if(con==null) {
+						    resultat="echec de la connexion";
+					      	return false;
+						    }
+
+						   QuestionsDB.setConnection(con);
+						   UtilisateurDB.setConnection(con);
+					   }
+					    int id=Integer.parseInt(ed1.getText().toString());
+				        try{
+
+				           QuestionsDB cl=new QuestionsDB(id);
+				           cl.read();
+				           resultat=cl.toString();
+
+				        }
+				        catch(Exception e){
+				         resultat="erreur" +e.getMessage();
+				         return false;
+
+				         }
+
+
+						return true;
+					}
+
+					protected void onPostExecute(Boolean result)
+							{
+						 super.onPostExecute(result);
+						 if (result)
+						 {
+							 
+							 Toast.makeText(Repondre_question.this,"ATTENDRE ...",Toast.LENGTH_SHORT).show();
+							 Intent i = new Intent(Repondre_question.this,Repondre_question.class);	
+			                 i.putExtra(ID_USER, utilisateur); 
+							 startActivity(i);
+							 finish();
+					     } 
+					     else 
+					     {
+					    	 ed1.setText("");
+					    	 Toast.makeText(Repondre_question.this,resultat,Toast.LENGTH_SHORT).show();
+					     }
+						
+						 
+					}
+
+				}
+	
+	
 }

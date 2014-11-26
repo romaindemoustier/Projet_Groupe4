@@ -129,7 +129,7 @@ public class Rentrer_id extends ActionBarActivity {
 						 if (result)
 						 {
 							 
-							 Toast.makeText(Rentrer_id.this,"Connexion à votre compte...",Toast.LENGTH_SHORT).show();
+							 Toast.makeText(Rentrer_id.this,"JE CHERCHE ...",Toast.LENGTH_SHORT).show();
 							 Intent i = new Intent(Rentrer_id.this,Repondre_question.class);	
 			                 i.putExtra(ID_USER, utilisateur); 
 							 startActivity(i);
@@ -137,7 +137,7 @@ public class Rentrer_id extends ActionBarActivity {
 					     } 
 					     else 
 					     {
-					    	 mdp.setText("");
+					    	 ed1.setText("");
 					    	 Toast.makeText(Rentrer_id.this,resultat,Toast.LENGTH_SHORT).show();
 					     }
 						
