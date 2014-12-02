@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -25,9 +27,12 @@ public class Rentrer_id extends ActionBarActivity {
     private Connection con=null;
     private EditText ed1;
 	 private EditText ed2;
+	 private MyAccesDB ma=null;
+	 
+	 String id_ex;
 	
 	QuestionsDB questions = new QuestionsDB();
-	UtilisateurDB utilisateur = new UtilisateurDB();
+	UtilisateurDB util = new UtilisateurDB();
 	
 	public static final String ID_USER="id_user";
 
@@ -40,7 +45,30 @@ public class Rentrer_id extends ActionBarActivity {
 		deco=(Button)findViewById(R.id.deco_id);
 		ed1=(EditText) findViewById(R.id.texte1);
 
-		//bad_id=(TextView)findViewById(R.id.id
+		
+		  valider.setOnClickListener(
+					 new View.OnClickListener() 
+					 {
+													
+							public void onClick(View v) 
+							{
+								  ma=new MyAccesDB(Rentrer_id.this);
+								  ma.execute();
+							}
+						}	 
+		       );
+			
+		    deco.setOnClickListener(
+					new OnClickListener()
+					{
+						public void onClick(View v)
+						{
+							Intent i = new Intent(Rentrer_id.this,MainActivity.class);						
+							startActivity(i);
+							finish();
+						}
+					 }
+					);
 		
 		
 		
@@ -71,13 +99,13 @@ public class Rentrer_id extends ActionBarActivity {
 		    private ProgressDialog pgd=null;
 
 
-					public MyAccesDB(MainActivity pActivity) {
+					public MyAccesDB(Rentrer_id pActivity) {
 
 						link(pActivity);
 						// TODO Auto-generated constructor stub
 					}
 
-					private void link(MainActivity pActivity) {
+					private void link(Rentrer_id pActivity) {
 						// TODO Auto-generated method stub
 
 
@@ -118,6 +146,37 @@ public class Rentrer_id extends ActionBarActivity {
 				         return false;
 
 				         }
+				        
+				        
+				        try  
+					      {   
+					 	     id_ex = ed1.getText().toString();  
+					 	     try
+					 	     {
+					    	    trouve= part.rechemail(em);
+					    	    questions = .get(0);
+					    	     	 
+						        if(!questions.getVerrouillage().equals(false))
+						        {
+								    resultat ="La question est verrouillé !";
+					    	        return false;
+						        }
+					    	 }
+						     catch(Exception e)
+						     {
+								 resultat ="Id invalide";
+					    	     return false;
+					    	 }
+			              }
+				        finally
+						  {
+							try
+							{
+							 con.close();
+						    }
+						    catch (Exception e){}
+						  }
+					     return true;
 
 
 						return true;
@@ -131,7 +190,7 @@ public class Rentrer_id extends ActionBarActivity {
 							 
 							 Toast.makeText(Rentrer_id.this,"JE CHERCHE ...",Toast.LENGTH_SHORT).show();
 							 Intent i = new Intent(Rentrer_id.this,Repondre_question.class);	
-			                 i.putExtra(ID_USER, utilisateur); 
+			                 i.putExtra(ID_USER, "util"); 
 							 startActivity(i);
 							 finish();
 					     } 

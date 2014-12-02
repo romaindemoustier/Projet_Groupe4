@@ -1,5 +1,7 @@
 package com.example.projetgroupe4;
 
+import java.sql.Connection;
+
 import Modele.QuestionsDB;
 import Modele.UtilisateurDB;
 import MyConnection.DBConnection;
@@ -13,6 +15,8 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 public class Repondre_question extends ActionBarActivity {
+	
+	private Connection con=null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +45,7 @@ public class Repondre_question extends ActionBarActivity {
 	
 	
 	
-	 class MyAccesDB extends AsyncTask<String,Integer,Boolean> {
+	/* class MyAccesDB extends AsyncTask<String,Integer,Boolean> {
 		    private String resultat;
 		    private ProgressDialog pgd=null;
 
@@ -106,7 +110,7 @@ public class Repondre_question extends ActionBarActivity {
 							 
 							 Toast.makeText(Repondre_question.this,"ATTENDRE ...",Toast.LENGTH_SHORT).show();
 							 Intent i = new Intent(Repondre_question.this,Repondre_question.class);	
-			                 i.putExtra(ID_USER, utilisateur); 
+			                 i.putExtra(ID_USER, "utilisateur"); 
 							 startActivity(i);
 							 finish();
 					     } 
@@ -119,7 +123,7 @@ public class Repondre_question extends ActionBarActivity {
 						 
 					}
 
-				}
+				}*/
 	
 	
 }
