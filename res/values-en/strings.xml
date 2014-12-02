@@ -4,7 +4,7 @@
     <string name="app_name">Vote</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">options</string>
-    <string name="title">Connection :</string>
+    <string name="title">Connexion :</string>
     <string name="t_user">Utilisateur :</string>
     <string name="login_E">Nom utilisateur</string>
     <string name="password_E">Mot de passe</string>

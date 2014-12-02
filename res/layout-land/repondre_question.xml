@@ -3,15 +3,6 @@
     android:background="@drawable/fond"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-    
-   <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="120dp"
-        android:text="@string/question"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 <RadioGroup
     android:id="@+id/radioGroup1"
@@ -48,11 +39,21 @@
     android:id="@+id/radio1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_above="@+id/radio0"
     android:layout_alignParentLeft="true"
-    android:layout_marginBottom="91dp"
+    android:layout_below="@+id/textView1"
+    android:layout_marginTop="33dp"
     android:textColor="#FFFFFF"
     android:textSize="15sp"
     android:textStyle="bold" />
+
+<TextView
+    android:id="@+id/textView1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentRight="true"
+    android:layout_below="@+id/radioGroup1"
+    android:layout_marginRight="187dp"
+    android:text="@string/question"
+    android:textAppearance="?android:attr/textAppearanceMedium" />
             
 </RelativeLayout>

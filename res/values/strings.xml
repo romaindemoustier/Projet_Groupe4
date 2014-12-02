@@ -7,6 +7,8 @@
     <string name="title">Connection :</string>
     <string name="t_user">Utilisateur :</string>
     <string name="login_E">Nom utilisateur</string>
+    <string name="deco">Déconnexion</string>
+    <string name="valid">Valider</string>
     <string name="password_E">Mot de passe</string>
     <string name="t_professeur">Professeur : </string>
     <string name="login_P">Nom utilisateur</string>
@@ -16,9 +18,12 @@
     <string name="b_ajout_q">Ajouter une question</string>
     <string name="b_supp_q">Supprimer une question</string>
     <string name="t_quest">Veuillez saisir une question :</string>
+    <string name="r_id">Rentrer l identifiant de la question :</string>
+    <string name="question">Question :</string>
     <string name="t_rep">Réponses :</string>
     <string name="title_activity_test">Test</string>
     <string name="title_activity_rentrer_id">Rentrer_id</string>
     <string name="title_activity_repondre_question">Repondre_question</string>
+    <string name="title_activity_stat">Stat</string>
 
 </resources>

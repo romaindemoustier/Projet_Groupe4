@@ -34,6 +34,10 @@
             android:name=".Repondre_question"
             android:label="@string/title_activity_repondre_question" >
         </activity>
+        <activity
+            android:name=".Stat"
+            android:label="@string/title_activity_stat" >
+        </activity>
     </application>
 
 </manifest>
