@@ -1,6 +1,7 @@
 package com.example.projetgroupe4;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import Modele.QuestionsDB;
 import Modele.UtilisateurDB;
@@ -30,6 +31,8 @@ public class Rentrer_id extends ActionBarActivity {
 	 private MyAccesDB ma=null;
 	 
 	 String id_ex;
+	 
+	 ArrayList<QuestionsDB> trouve = new ArrayList<QuestionsDB> ();
 	
 	QuestionsDB questions = new QuestionsDB();
 	UtilisateurDB util = new UtilisateurDB();
@@ -54,6 +57,9 @@ public class Rentrer_id extends ActionBarActivity {
 							{
 								  ma=new MyAccesDB(Rentrer_id.this);
 								  ma.execute();
+								  Intent i = new Intent(Rentrer_id.this,MainActivity.class);						
+								  startActivity(i);
+								  finish();
 							}
 						}	 
 		       );
@@ -151,14 +157,15 @@ public class Rentrer_id extends ActionBarActivity {
 				        try  
 					      {   
 					 	     id_ex = ed1.getText().toString();  
-					 	     try
+					 	     try 
 					 	     {
-					    	    trouve= part.rechemail(em);
-					    	    questions = .get(0);
+					    	    trouve= questions.verifverrouillage(id_ex);
+					    	    questions = trouve.get(0);
 					    	     	 
-						        if(!questions.getVerrouillage().equals(false))
+						        if(!questions.getVerrouillage())
 						        {
-								    resultat ="La question est verrouillé !";
+								    /*resultat ="La question est verrouillé !";*/
+						        	Toast.makeText(Rentrer_id.this,"Identifiant incorrect",Toast.LENGTH_SHORT).show();
 					    	        return false;
 						        }
 					    	 }
@@ -179,7 +186,7 @@ public class Rentrer_id extends ActionBarActivity {
 					     return true;
 
 
-						return true;
+						
 					}
 
 					protected void onPostExecute(Boolean result)

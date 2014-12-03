@@ -4,6 +4,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class QuestionsDB extends Questions implements CRUD {
 
@@ -95,5 +96,53 @@ public class QuestionsDB extends Questions implements CRUD {
             throw new Exception("Erreur " + e.getMessage());
         }
     }
+    
+    public ArrayList<QuestionsDB> verifverrouillage(String id_ex) throws Exception //utilisé lors de la connection à la BD d'un utilisateur
+	   {
+		    ArrayList<QuestionsDB> cherche = new ArrayList<QuestionsDB>();
+		    
+		    String req = "{?=call READ_QUESTION(?)}";
+	            
+		    CallableStatement cstmt = null;
+		    try
+		    {
+		       cstmt = dbConnect.prepareCall(req);
+	           cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
+		       cstmt.setString(2,id_ex);
+		       cstmt.executeQuery();
+	           ResultSet rs = (ResultSet)cstmt.getObject(1);
+		       boolean trouve = false;
+		    
+	           while(rs.next())
+	           {
+	              trouve=true;
+		          int id_questions = rs.getInt("ID_QUESTIONS");
+		       	  String questions = rs.getString("QUESTIONS");
+		       	  Boolean verrouillage =rs.getBoolean("VEROUILLAGE");
+		     	  int professeur = rs.getInt("PROFESSEUR");
+		       }
+		    
+	           if(!trouve)
+	           {
+	        	  throw new Exception("id inconnu");
+	           }
+	           else 
+	           {
+	           	  return cherche;
+	           }
+		    }
+		    catch(Exception e)
+		    {
+	            throw new Exception("Erreur de lecture "+e.getMessage());
+	        }
+	        finally
+	        {
+	           try
+	           {
+	              cstmt.close();
+	           }
+	           catch (Exception e){}
+	        }
+	  }
 
 }

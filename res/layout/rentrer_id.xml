@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/valid_id_q"
         android:layout_alignBottom="@+id/valid_id_q"
-        android:background="@color/red"
+        
         android:layout_alignRight="@+id/texte1"
         android:text="@string/deco" />
 
