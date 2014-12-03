@@ -38,6 +38,24 @@ public class Rentrer_id extends ActionBarActivity {
 	UtilisateurDB util = new UtilisateurDB();
 	
 	public static final String ID_USER="id_user";
+	
+	public void valider(View v) 
+	{
+		  ma=new MyAccesDB(Rentrer_id.this);
+		  ma.execute();
+		  Intent i = new Intent(Rentrer_id.this,Repondre_question.class);						
+		  startActivity(i);
+		  finish();
+	}
+	
+	public void deco(View v) 
+	{
+		Intent i = new Intent(Rentrer_id.this,MainActivity.class);						
+		startActivity(i);
+		finish();
+	}
+
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,35 +65,6 @@ public class Rentrer_id extends ActionBarActivity {
 		valider=(Button)findViewById(R.id.valid_id_q);
 		deco=(Button)findViewById(R.id.deco_id);
 		ed1=(EditText) findViewById(R.id.texte1);
-
-		
-		  valider.setOnClickListener(
-					 new View.OnClickListener() 
-					 {
-													
-							public void onClick(View v) 
-							{
-								  ma=new MyAccesDB(Rentrer_id.this);
-								  ma.execute();
-								  Intent i = new Intent(Rentrer_id.this,MainActivity.class);						
-								  startActivity(i);
-								  finish();
-							}
-						}	 
-		       );
-			
-		    deco.setOnClickListener(
-					new OnClickListener()
-					{
-						public void onClick(View v)
-						{
-							Intent i = new Intent(Rentrer_id.this,MainActivity.class);						
-							startActivity(i);
-							finish();
-						}
-					 }
-					);
-		
 		
 		
 	}

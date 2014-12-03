@@ -42,6 +42,7 @@
         android:layout_alignLeft="@+id/textView2"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="19dp"
+        android:onClick="valider"
         android:text="@string/valid" />
 
     <Button
@@ -50,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/valid_id_q"
         android:layout_alignBottom="@+id/valid_id_q"
-        
+        android:onClick="deco"
         android:layout_alignRight="@+id/texte1"
         android:text="@string/deco" />
 
