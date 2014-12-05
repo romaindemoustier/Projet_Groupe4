@@ -23,10 +23,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Test"
-            android:label="@string/title_activity_test" >
-        </activity>
-        <activity
             android:name=".Rentrer_id"
             android:label="@string/title_activity_rentrer_id" >
         </activity>
@@ -37,6 +33,30 @@
         <activity
             android:name=".Stat"
             android:label="@string/title_activity_stat" >
+        </activity>
+        <activity
+            android:name=".Inscription"
+            android:label="@string/title_activity_inscription" >
+        </activity>
+        <activity
+            android:name=".Menu_prof"
+            android:label="@string/title_activity_menu_prof" >
+        </activity>
+        <activity
+            android:name=".Menu_professeur"
+            android:label="@string/title_activity_menu_prof" >
+        </activity>
+        <activity
+            android:name=".Men_professeur"
+            android:label="@string/title_activity_menu_prof" >
+        </activity>
+        <activity
+            android:name=".Ajouter_question"
+            android:label="@string/title_activity_ajouter_question" >
+        </activity>
+        <activity
+            android:name=".Envoie_question"
+            android:label="@string/title_activity_envoie_question" >
         </activity>
     </application>
 

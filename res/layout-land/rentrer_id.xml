@@ -15,25 +15,6 @@
         <requestFocus />
     </EditText>
 
-    <Button
-        android:id="@+id/valid_id_q"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="17dp"
-        android:layout_toLeftOf="@+id/textView1"
-        android:text="@string/valid" />
-
-    <Button
-        android:id="@+id/deco_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/valid_id_q"
-        android:layout_alignBottom="@+id/valid_id_q"
-        android:layout_toRightOf="@+id/texte1"
-        android:background="@color/red"
-        android:text="@string/deco" />
-
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
@@ -50,7 +31,29 @@
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/valid_id_q"
         android:layout_centerVertical="true"
-        android:text="ID :"
+        android:text="@string/id_"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/deco_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/valid_id_q"
+        android:layout_alignBottom="@+id/valid_id_q"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="14dp"
+        android:text="@string/deco"
+        android:width="170dp" />
+
+    <Button
+        android:id="@+id/valid_id_q"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="19dp"
+        android:layout_marginLeft="24dp"
+        android:text="@string/valid"
+        android:width="170dp" />
 
 </RelativeLayout>

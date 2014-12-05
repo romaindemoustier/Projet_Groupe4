@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Abstimmung</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">options</string>
+    <string name="title">Rapport :</string>
+    <string name="t_user">Benutzer :</string>
+    <string name="login_E">Name Benutzer</string>
+    <string name="id_">ID :</string>
+    <string name="deco">Deconnection</string>
+    <string name="valid">Rechtswirksam machen</string>
+    <string name="password_E">Kennwort</string>
+    <string name="t_professeur">Professor : </string>
+    <string name="login_P">Name Benutzer</string>
+    <string name="password_P">Kennwort</string>
+    <string name="B_inscr">Anmeldung</string>
+    <string name="b_env_q">Sende und Ergebnis Frage</string>
+    <string name="b_ajout_q">Eine Frage hinzufügen</string>
+    <string name="b_supp_q">Eine Frage beseitigen</string>
+    <string name="t_quest">Eine Frage erfassen</string>
+    <string name="r_id">Zurückkehren ihn der Frage identifizierend</string>
+    <string name="question">Frage</string>
+    <string name="t_rep">Antwort</string>
+    <string name="ins_pass">Kennwort :</string>
+    <string name="title_activity_rentrer_id">Zurückkehren ihn identifizierend</string>
+    <string name="title_activity_repondre_question">Auf eine Frage antworten</string>
+    <string name="title_activity_envoie_question">Eine Frage senden</string>
+    <string name="title_activity_stat">Statistiken</string>
+    <string name="title_activity_inscription">Anmeldung</string>
+    <string name="title_activity_menu_prof">Klein Lehrer</string>
+    <string name="title_activity_ajouter_question">Eine Frage hinzufügen</string>
+
+</resources>

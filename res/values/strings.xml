@@ -7,7 +7,8 @@
     <string name="title">Connection :</string>
     <string name="t_user">Utilisateur :</string>
     <string name="login_E">Nom utilisateur</string>
-    <string name="deco">Déconnexion</string>
+    <string name="id_">ID :</string>
+    <string name="deco">Déconnection</string>
     <string name="valid">Valider</string>
     <string name="password_E">Mot de passe</string>
     <string name="t_professeur">Professeur : </string>
@@ -21,9 +22,13 @@
     <string name="r_id">Rentrer l identifiant de la question :</string>
     <string name="question">Question :</string>
     <string name="t_rep">Réponses :</string>
-    <string name="title_activity_test">Test</string>
-    <string name="title_activity_rentrer_id">Rentrer_id</string>
-    <string name="title_activity_repondre_question">Repondre_question</string>
-    <string name="title_activity_stat">Stat</string>
+    <string name="ins_pass">Mot de passe :</string>
+    <string name="title_activity_rentrer_id">Rentrer identifiant</string>
+    <string name="title_activity_repondre_question">Repondre question</string>
+    <string name="title_activity_envoie_question">Envoyer une question</string>
+    <string name="title_activity_stat">Statistiques</string>
+    <string name="title_activity_inscription">Inscription</string>
+    <string name="title_activity_menu_prof">Menu professeur</string>
+    <string name="title_activity_ajouter_question">Ajouter une question</string>
 
 </resources>
