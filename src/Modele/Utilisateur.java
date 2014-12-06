@@ -1,6 +1,7 @@
 package Modele;
 public class Utilisateur {
-	// Notez que l'identifiant est un long
+	
+	
 	protected int id_user;
 	protected String login;
 	protected String password;
@@ -12,6 +13,15 @@ public class Utilisateur {
 	
 	public Utilisateur(int id_user){
 		this.id_user = id_user;
+	}
+	
+
+	public Utilisateur(int id_user, String login, String password, boolean estprof) {
+		super();
+		this.id_user=id_user;
+		this.login = login;
+		this.password = password;
+		this.estprof = estprof;
 	}
 	
 	public Utilisateur(String login, String password, boolean estprof) {

@@ -4,6 +4,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class UtilisateurDB extends Utilisateur implements CRUD {
 
@@ -26,16 +27,18 @@ public class UtilisateurDB extends Utilisateur implements CRUD {
     }
 
     @Override
-    public void create() throws Exception {
+    public void  create() throws Exception {
         CallableStatement c;
         try {
             String req = "call create_utilisateur(?,?,?,?)";
             c = dbConnect.prepareCall(req);
-            c.setInt(1, id_user);
+            /*c.setInt(1, id_user);*/
+            c.registerOutParameter(1, java.sql.Types.INTEGER);
             c.setString(2, login);
             c.setString(3, password);
             c.setBoolean(4, estprof);
             c.executeUpdate();
+            this.id_user=c.getInt(1);
             c.close();
         } catch (Exception e) {
             throw new Exception("Erreur " + e.getMessage());
@@ -66,6 +69,57 @@ public class UtilisateurDB extends Utilisateur implements CRUD {
 			}
 		}
 	}
+    
+    
+    public ArrayList<UtilisateurDB> rechlog(String login) throws Exception 
+	   {
+		    ArrayList<UtilisateurDB> rech = new ArrayList<UtilisateurDB>();
+		    
+		    String req = "{?=call read_utilisateur_login(?)}";
+	            
+		    CallableStatement cstmt = null;
+		    try
+		    {
+		       cstmt = dbConnect.prepareCall(req);
+	           cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
+		       cstmt.setString(2,login);
+		       cstmt.executeQuery();
+	           ResultSet rs = (ResultSet)cstmt.getObject(1);
+		       boolean trouve = false;
+		    
+	           while(rs.next())
+	           {
+	              trouve=true;
+		          /*int id_user = rs.getInt("ID_USER");*/
+		       	  String log = rs.getString("LOGIN");
+		       	  String password=rs.getString("PASSWORD");
+		     	  Boolean estprof = rs.getBoolean("ESTPROF");
+		     
+		     	  rech.add(new UtilisateurDB(log,password,estprof));
+		       }
+		    
+	           if(!trouve)
+	           {
+	        	  throw new Exception("nom inconnu");
+	           }
+	           else 
+	           {
+	           	  return rech;
+	           }
+		    }
+		    catch(Exception e)
+		    {
+	            throw new Exception("Erreur de lecture "+e.getMessage());
+	        }
+	        finally
+	        {
+	           try
+	           {
+	              cstmt.close();
+	           }
+	           catch (Exception e){}
+	        }
+	  }
 
     @Override
     public void update() throws Exception {

@@ -55,9 +55,18 @@
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView2"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="37dp"
         android:text="@string/B_inscr" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button1"
+        android:layout_alignBottom="@+id/button1"
+        android:layout_toRightOf="@+id/textView1"
+        android:text="@string/annuler" />
 
 </RelativeLayout>

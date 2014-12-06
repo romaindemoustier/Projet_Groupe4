@@ -60,7 +60,7 @@ public class Rentrer_id extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.rentrer_id);
+		setContentView(R.layout.activity_main);
 		
 		valider=(Button)findViewById(R.id.valid_id_q);
 		deco=(Button)findViewById(R.id.deco_id);

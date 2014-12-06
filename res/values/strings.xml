@@ -7,6 +7,7 @@
     <string name="title">Connection :</string>
     <string name="t_user">Utilisateur :</string>
     <string name="login_E">Nom utilisateur</string>
+    <string name="annuler">annuler</string>
     <string name="id_">ID :</string>
     <string name="deco">Déconnection</string>
     <string name="valid">Valider</string>
