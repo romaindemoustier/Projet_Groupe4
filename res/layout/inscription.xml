@@ -58,7 +58,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="37dp"
-        android:text="@string/B_inscr" />
+        android:text="@string/B_inscr"
+        android:width="120dp" />
 
     <Button
         android:id="@+id/button2"
@@ -67,6 +68,7 @@
         android:layout_alignBaseline="@+id/button1"
         android:layout_alignBottom="@+id/button1"
         android:layout_toRightOf="@+id/textView1"
-        android:text="@string/annuler" />
+        android:text="@string/annuler"
+        android:width="120dp" />
 
 </RelativeLayout>

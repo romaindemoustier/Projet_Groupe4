@@ -38,15 +38,6 @@
         android:layout_marginTop="14dp"
         android:ems="10" />
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:width="325dp"
-        android:text="@string/B_inscr" />
-
     <EditText
         android:id="@+id/editText2"
         android:layout_width="wrap_content"
@@ -60,5 +51,28 @@
 
         <requestFocus />
     </EditText>
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="18dp"
+        android:layout_toLeftOf="@+id/textView2"
+        android:text="@string/B_inscr"
+        android:width="325dp" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/button1"
+            android:layout_alignBottom="@+id/button1"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="34dp"
+            android:layout_toRightOf="@+id/textView2"
+            android:text="@string/annuler"
+            android:width="325dp" />
 
 </RelativeLayout>
