@@ -35,7 +35,7 @@ public class Inscription extends ActionBarActivity {
 		mdp=(EditText)findViewById(R.id.editText1);
 		login=(EditText)findViewById(R.id.editText2);
 		Insc=(Button)findViewById(R.id.button1);
-		Insc=(Button)findViewById(R.id.button2);
+		annul=(Button)findViewById(R.id.button2);
 		
 		Insc.setOnClickListener(
 				 new View.OnClickListener() {
@@ -69,7 +69,7 @@ public class Inscription extends ActionBarActivity {
 					}
 				 }
 				);
-	    
+	   
 	}
 	    
 	    
@@ -131,8 +131,8 @@ public class Inscription extends ActionBarActivity {
 			    	String log = login.getText().toString();	
 			    	String mot = mdp.getText().toString();	
 			    	
-	                /*UtilisateurDB part = new UtilisateurDB(100,log,mot,false);
-	                UtilisateurDB.create();*/
+	                UtilisateurDB part = new UtilisateurDB(log,mot,false);
+	                part.create();
 			
 			    	
 	            } 
