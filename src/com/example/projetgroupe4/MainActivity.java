@@ -19,6 +19,7 @@ import android.widget.Toast;
 public class MainActivity extends ActionBarActivity {
 	
 	private Button inscription=null;
+	private Button connection=null;
 
 
 	private MyAccesDB mc=null;
@@ -45,16 +46,29 @@ public class MainActivity extends ActionBarActivity {
 		
 		login=(EditText)findViewById(R.id.login);
 		mdp=(EditText)findViewById(R.id.password);
-		inscription=(Button)findViewById(R.id.B_inscr);
+		connection=(Button)findViewById(R.id.B_inscr);
+		inscription=(Button)findViewById(R.id.button1);
 
-
-		
-	    inscription.setOnClickListener(
+		inscription.setOnClickListener(
 				 new View.OnClickListener() 
 				 {
 												
 						public void onClick(View v) 
 						{
+							 Intent i = new Intent(MainActivity.this,Inscription.class);	
+							 startActivity(i);
+							 finish();
+						}
+					}	 
+	       );
+		
+	    connection.setOnClickListener(
+				 new View.OnClickListener() 
+				 {
+												
+						public void onClick(View v) 
+						{
+				
 							  mc=new MyAccesDB(MainActivity.this);
 							  mc.execute();
 						}

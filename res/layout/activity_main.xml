@@ -37,7 +37,7 @@
         android:layout_below="@+id/password"
         android:layout_marginTop="20dp"
         android:background="@color/red"
-        android:text="@string/B_inscr" />
+        android:text="@string/connection" />
 
     <TextView
         android:id="@+id/titre"
@@ -49,5 +49,16 @@
         android:text="@string/title"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/B_inscr"
+        android:layout_alignRight="@+id/login"
+        android:layout_below="@+id/B_inscr"
+        android:background="@color/red"
+        android:layout_marginTop="18dp"
+        android:text="@string/B_inscr" />
 
 </RelativeLayout>

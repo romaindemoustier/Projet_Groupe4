@@ -5,6 +5,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">options</string>
     <string name="title">Connexion :</string>
+     <string name="connection">Connexion</string>
     <string name="t_user">User :</string>
     <string name="login_E">Username</string>
     <string name="annuler">Back</string>
