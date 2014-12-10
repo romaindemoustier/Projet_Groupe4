@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -22,6 +23,7 @@ public class Inscription extends ActionBarActivity {
 	
 	private EditText login;
 	private EditText mdp;
+	private EditText verif;
 	
 	private MyAccesDB ma=null;
 	
@@ -32,8 +34,9 @@ public class Inscription extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.inscription);
 		
-		mdp=(EditText)findViewById(R.id.editText1);
-		login=(EditText)findViewById(R.id.editText2);
+		verif=(EditText)findViewById(R.id.editText5);
+		mdp=(EditText)findViewById(R.id.editText2);
+		login=(EditText)findViewById(R.id.editText1);
 		Insc=(Button)findViewById(R.id.button1);
 		annul=(Button)findViewById(R.id.button2);
 		
@@ -78,13 +81,22 @@ public class Inscription extends ActionBarActivity {
 
 	    	String log = login.getText().toString();	
 	    	String pass = mdp.getText().toString();	
+	    	String verification = verif.getText().toString();
 	    		
-	    	   
+	    	  Log.e("dssdsd",pass);
+	    	  Log.e("dssdsd",verification);
+	    	  
 	    	resultat=null;
 	    	
 	    	if(log.equals("") || pass.equals("") )
 	    	{
 	    		resultat="Veuillez remplir tous les champs !";
+	    		return false;
+	    	}
+	    	
+	    	if (!verification.equals(pass))
+	    	{
+	    		resultat="Mot de passe incorrect !";
 	    		return false;
 	    	}
 		   
