@@ -83,8 +83,6 @@ public class Inscription extends ActionBarActivity {
 	    	String pass = mdp.getText().toString();	
 	    	String verification = verif.getText().toString();
 	    		
-	    	  Log.e("dssdsd",pass);
-	    	  Log.e("dssdsd",verification);
 	    	  
 	    	resultat=null;
 	    	

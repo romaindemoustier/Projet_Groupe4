@@ -132,7 +132,7 @@ public class MainActivity extends ActionBarActivity {
 				Connection con = new DBConnection().getConnection();
 				if (con == null) {
 					resultat = "Echec de la connexion !";
-					Log.e("loooooooooooooooooooooooooooooool", "dffd");
+					
 					return false;
 				}
 
@@ -171,14 +171,22 @@ public class MainActivity extends ActionBarActivity {
 			super.onPostExecute(result);
 			pgd.dismiss();
 			if (result) {
-
-				Toast.makeText(MainActivity.this,
-						"Connexion à votre compte...", Toast.LENGTH_SHORT)
-						.show();
-				Intent i = new Intent(MainActivity.this, Rentrer_id.class);
+				
+				Toast.makeText(MainActivity.this,"Connexion à votre compte...", Toast.LENGTH_SHORT).show();
+				
+				if(!util.getEstprof()){
+					Intent i = new Intent(MainActivity.this, Rentrer_id.class);
+					i.putExtra(IDUTILISATEUR, "util");
+					startActivity(i);
+					finish();
+				}
+				
+				else{
+				Intent i = new Intent(MainActivity.this, Menu_prof.class);
 				i.putExtra(IDUTILISATEUR, "util");
 				startActivity(i);
 				finish();
+				}
 			} else {
 				mdp.setText("");
 				Toast.makeText(MainActivity.this, resultat, Toast.LENGTH_SHORT)
