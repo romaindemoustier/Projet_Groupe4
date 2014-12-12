@@ -11,6 +11,7 @@
         android:layout_alignLeft="@+id/r1"
         android:layout_alignRight="@+id/r1"
         android:layout_below="@+id/r1"
+        android:width="260sp"
         android:layout_marginTop="22dp"
         android:ems="10" />
 
@@ -21,6 +22,7 @@
         android:layout_alignLeft="@+id/r2"
         android:layout_alignRight="@+id/r2"
         android:layout_below="@+id/r2"
+        android:width="260sp"
         android:layout_marginTop="19dp"
         android:ems="10" />
 
@@ -31,6 +33,7 @@
         android:layout_alignLeft="@+id/r3"
         android:layout_alignRight="@+id/r3"
         android:layout_below="@+id/r3"
+        android:width="260sp"
         android:layout_marginTop="15dp"
         android:ems="10" />
 
@@ -52,6 +55,7 @@
         android:layout_alignRight="@+id/ch_quest"
         android:layout_below="@+id/t_reponses"
         android:layout_marginTop="26dp"
+        android:width="260sp"
         android:ems="10" />
 
     <EditText
@@ -62,7 +66,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="21dp"
         android:ems="10"
-        android:width="260dp" />
+        android:width="260sp" />
 
     <TextView
         android:id="@+id/t_reponses"

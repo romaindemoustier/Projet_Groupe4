@@ -17,6 +17,7 @@
         android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="38dp"
+        android:width="250sp"
         android:ems="10" >
 
         <requestFocus />
@@ -30,7 +31,7 @@
         android:layout_alignBottom="@+id/button1"
         android:layout_toRightOf="@+id/textView1"
         android:text="@string/annuler"
-        android:width="120dp" />
+        android:width="120sp" />
 
     <TextView
         android:id="@+id/textView1"
@@ -46,7 +47,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/editText2"
         android:layout_below="@+id/textView3"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="18dp" 
+        android:width="250sp"
         android:ems="10"
         android:inputType="textPassword" />
 
@@ -67,6 +69,7 @@
         android:layout_alignLeft="@+id/editText1"
         android:layout_centerVertical="true"
         android:ems="10"
+        android:width="250sp"
         android:inputType="textPassword" />
 
     <TextView
@@ -88,6 +91,6 @@
         android:layout_marginLeft="18dp"
         android:layout_marginTop="23dp"
         android:text="@string/B_inscr"
-        android:width="120dp" />
+        android:width="120sp" />
 
 </RelativeLayout>

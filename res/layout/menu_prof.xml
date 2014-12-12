@@ -11,6 +11,7 @@
         android:layout_alignLeft="@+id/b_ajout_q"
         android:layout_alignRight="@+id/b_ajout_q"
         android:layout_centerVertical="true"
+        android:width="300sp"
         android:text="@string/b_supp_q" />
 
     <Button
@@ -20,8 +21,7 @@
         android:layout_above="@+id/b_supp_q"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"
-        android:minHeight="48dp"
-        android:minWidth="280dp"
+        android:width="300sp"
         android:text="@string/b_ajout_q" />
 
     <TextView
@@ -42,6 +42,7 @@
         android:layout_alignRight="@+id/b_supp_q"
         android:layout_below="@+id/b_supp_q"
         android:layout_marginTop="20dp"
+        android:width="300sp"
         android:text="@string/b_env_q" />
 
 </RelativeLayout>

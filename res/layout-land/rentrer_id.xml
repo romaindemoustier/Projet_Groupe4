@@ -4,34 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <EditText
-        android:id="@+id/texte1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView2"
-        android:layout_alignRight="@+id/textView1"
-        android:ems="10" >
-
-        <requestFocus />
-    </EditText>
-
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="26dp"
         android:text="@string/r_id"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/valid_id_q"
-        android:layout_centerVertical="true"
-        android:text="@string/id_"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button
@@ -41,9 +21,9 @@
         android:layout_alignBaseline="@+id/valid_id_q"
         android:layout_alignBottom="@+id/valid_id_q"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="14dp"
+        android:layout_marginRight="26dp"
         android:text="@string/deco"
-        android:width="170dp" />
+        android:width="150sp" />
 
     <Button
         android:id="@+id/valid_id_q"
@@ -51,9 +31,31 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginBottom="19dp"
-        android:layout_marginLeft="24dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="15dp"
         android:text="@string/valid"
-        android:width="170dp" />
+        android:width="150sp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_centerVertical="true"
+        android:text="ID :"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/texte1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView2"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_alignRight="@+id/textView1"
+        android:ems="10"
+        android:width="180sp" >
+
+        <requestFocus />
+    </EditText>
 
 </RelativeLayout>
