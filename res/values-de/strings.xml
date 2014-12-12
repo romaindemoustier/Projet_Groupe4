@@ -8,6 +8,7 @@
     <string name="t_user">Benutzer :</string>
      <string name="connection">Benutzer</string>
     <string name="login_E">Name Benutzer</string>
+    <string name="verif">checken</string>
     <string name="annuler">Aufheben</string>
     <string name="id_">ID :</string>
     <string name="deco">Deconnection</string>

@@ -10,6 +10,7 @@
     <string name="login_E">Nom utilisateur</string>
     <string name="annuler">annuler</string>
     <string name="id_">ID :</string>
+    <string name="verif">Vérification :</string>
     <string name="deco">Déconnection</string>
     <string name="valid">Valider</string>
     <string name="password_E">Mot de passe</string>
