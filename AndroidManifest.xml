@@ -28,6 +28,11 @@
         <activity
             android:name=".Repondre_question"
             android:label="@string/title_activity_repondre_question" >
+                <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".Stat"
@@ -36,11 +41,7 @@
         <activity
             android:name=".Inscription"
             android:label="@string/title_activity_inscription" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        
         </activity>
         <activity
             android:name=".Menu_prof"
