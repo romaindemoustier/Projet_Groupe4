@@ -4,6 +4,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class ReponsesDB extends Reponses implements CRUD {
 
@@ -94,5 +95,43 @@ public class ReponsesDB extends Reponses implements CRUD {
             throw new Exception("Erreur " + e.getMessage());
         }
     }
+    
+    public static ArrayList<ReponsesDB> getreponse(int id_questions) throws Exception{
+    	ArrayList<ReponsesDB> retour= new ArrayList<ReponsesDB>();
+    	PreparedStatement cstmt=null;
+    	try{
+    	String query= "SELECT REPONSE WHERE ID_QUESTIONS=(?)";
+    	cstmt = dbConnect.prepareStatement(query);
+    	ResultSet rs=cstmt.executeQuery();
+    	if(rs.isBeforeFirst()){
+    	ReponsesDB rep;
+    	while(rs.next())
+    	{
+    	rep=new ReponsesDB();
+    	rep.setReponses(rs.getString("REPONSES"));
+    	retour.add(rep);
+    	}
+    	}
+    	else
+    	throw new Exception();
+    	return retour;
+    	}
+    	catch(Exception e)
+    	{
+    	throw new Exception("Erreur lors de la lecture"+e.getMessage());
+    	}
+    	finally
+    	{
+    	try
+    	{
+    	cstmt.close();
+    	}
+    	catch (Exception e)
+    	{
+    	}
+    	
+    	}
+    }
+    
 
 }

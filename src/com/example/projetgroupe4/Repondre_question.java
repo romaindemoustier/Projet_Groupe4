@@ -1,27 +1,46 @@
 package com.example.projetgroupe4;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import Modele.QuestionsDB;
-import Modele.UtilisateurDB;
+import Modele.ReponsesDB;
+import Modele.Reponses_eleve;
+import Modele.Reponses_eleveDB;
 import MyConnection.DBConnection;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 public class Repondre_question extends ActionBarActivity {
 	
+	
 	private Connection con=null;
+	private ArrayList<ReponsesDB> rep_liste;
+	private ListView list=null;
+	
+	
+	
+	ReponsesDB reponses= new ReponsesDB();
+	QuestionsDB question = new QuestionsDB();
+	Reponses_eleve rep_e = new Reponses_eleve();
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.repondre_question);
+		
+		list = (ListView) findViewById(R.id.listView1);
+		 MyAccesDB ma=new MyAccesDB(Repondre_question.this);
+		 ma.execute();
 	}
 
 	@Override
@@ -45,18 +64,18 @@ public class Repondre_question extends ActionBarActivity {
 	
 	
 	
-	/* class MyAccesDB extends AsyncTask<String,Integer,Boolean> {
+	 class MyAccesDB extends AsyncTask<String,Integer,Boolean> {
 		    private String resultat;
 		    private ProgressDialog pgd=null;
 
 
-					public MyAccesDB(MainActivity pActivity) {
+					public MyAccesDB(Repondre_question pActivity) {
 
 						link(pActivity);
 						// TODO Auto-generated constructor stub
 					}
 
-					private void link(MainActivity pActivity) {
+					private void link(Repondre_question pActivity) {
 						// TODO Auto-generated method stub
 
 
@@ -74,7 +93,7 @@ public class Repondre_question extends ActionBarActivity {
 					@Override
 					protected Boolean doInBackground(String... arg0) {
 
-					   if(con==null){//premier invocation
+					   if(con==null){
 						   con = new DBConnection().getConnection();
 					    	if(con==null) {
 						    resultat="echec de la connexion";
@@ -82,25 +101,28 @@ public class Repondre_question extends ActionBarActivity {
 						    }
 
 						   QuestionsDB.setConnection(con);
-						   UtilisateurDB.setConnection(con);
+						   ReponsesDB.setConnection(con);
+						   Reponses_eleveDB.setConnection(con);
 					   }
-					    int id=Integer.parseInt(ed1.getText().toString());
+					    
 				        try{
 
-				           QuestionsDB cl=new QuestionsDB(id);
-				           cl.read();
-				           resultat=cl.toString();
+				        	rep_liste= ReponsesDB.getreponse(1);
+				        	 for(int i=0; i<rep_liste.size();i++)
+				        	 {
+				        	 Log.d("ELEMENT","Elt"+i+"est: "+rep_liste.get(i));
+				        	 }
 
 				        }
-				        catch(Exception e){
+				        catch(Exception e)
+				        {
 				         resultat="erreur" +e.getMessage();
 				         return false;
-
 				         }
-
-
-						return true;
-					}
+				        
+				        
+				      
+				}
 
 					protected void onPostExecute(Boolean result)
 							{
@@ -108,22 +130,18 @@ public class Repondre_question extends ActionBarActivity {
 						 if (result)
 						 {
 							 
-							 Toast.makeText(Repondre_question.this,"ATTENDRE ...",Toast.LENGTH_SHORT).show();
-							 Intent i = new Intent(Repondre_question.this,Repondre_question.class);	
-			                 i.putExtra(ID_USER, "utilisateur"); 
-							 startActivity(i);
-							 finish();
+							 ArrayAdapter<String> adapter = new ArrayAdapter<String>(Repondre_question.this,android.R.layout.simple_list_item_multiple_choice,rep_liste);
+							 list.setAdapter(adapter);
+							
 					     } 
 					     else 
 					     {
 					    	 ed1.setText("");
-					    	 Toast.makeText(Repondre_question.this,resultat,Toast.LENGTH_SHORT).show();
+					    	 Toast.makeText(Rentrer_id.this,resultat,Toast.LENGTH_SHORT).show();
 					     }
 						
 						 
 					}
 
-				}*/
-	
-	
+				}
 }
