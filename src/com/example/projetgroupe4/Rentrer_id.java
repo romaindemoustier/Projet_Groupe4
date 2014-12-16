@@ -27,7 +27,7 @@ public class Rentrer_id extends ActionBarActivity {
 	private EditText ed1;
 	private MyAccesDB ma=null;
 
-	char id_ex;
+	int id_ex;
 
 	ArrayList<QuestionsDB> trouve = new ArrayList<QuestionsDB> ();
 	QuestionsDB questions = new QuestionsDB();
@@ -127,14 +127,15 @@ public class Rentrer_id extends ActionBarActivity {
 
 			try  
 			{   
-				id_ex =(ed1.getText().toString().charAt(0));
-				System.out.println(id_ex);
+				id_ex =Integer.parseInt(ed1.getText().toString());
+			
 				try 
 				{
 					trouve= questions.verifverrouillage1(id_ex);
-					System.out.println(trouve.toString());
+					
 				
 					questions = trouve.get(0);Log.d("kffdjk",trouve.get(0).getQuestions());
+					
 					if(!questions.getVerrouillage())
 					{
 						resultat ="La question est verrouillée !";
@@ -166,7 +167,7 @@ public class Rentrer_id extends ActionBarActivity {
 
 				Toast.makeText(Rentrer_id.this,"ID Valide !",Toast.LENGTH_SHORT).show();
 				Intent i = new Intent(Rentrer_id.this,Repondre_question.class); 
-				i.putExtra(ID_QUESTIONS, "questions"); 
+				i.putExtra(ID_QUESTIONS, id_ex); 
 				startActivity(i);
 				finish();
 			} 

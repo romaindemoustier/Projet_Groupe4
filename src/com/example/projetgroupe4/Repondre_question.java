@@ -10,6 +10,7 @@ import Modele.Reponses_eleve;
 import Modele.Reponses_eleveDB;
 import MyConnection.DBConnection;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -106,11 +107,13 @@ public class Repondre_question extends ActionBarActivity {
 			}
 
 			try{
-
+				//private int id_intent;
+				Intent in = getIntent();
+				//id_intent=in.getIntExtra(ID_QUESTIONS);
 				rep_liste= ReponsesDB.getreponse(1);
 				for(int i=0; i<rep_liste.size();i++)
 				{
-					Log.d("ELEMENT","Elt"+i+"est: "+rep_liste.get(i));
+					Log.d("ELEMENT","Elt"+i+"est: "+rep_liste.get(i).toString());
 				}
 
 			}
@@ -135,25 +138,16 @@ public class Repondre_question extends ActionBarActivity {
 				int i=0;
 				while(it.hasNext()){
 					it.next();
-					if(rep_liste.get(i).getId_questions()==1){
+						System.out.println("La problème arrive5");
 						liste_simple.add(rep_liste.get(i).getReponses());
-						i++;}
-					else{
-						it.remove();
-						i++;
 					}
-
-
 					ArrayAdapter<String> adapter = new ArrayAdapter<String>(Repondre_question.this,android.R.layout.simple_list_item_1, liste_simple);
 					list.setAdapter(adapter);
-
-
-				
 
 			}
 		}
 		}
 	}
-}
+
 
 	

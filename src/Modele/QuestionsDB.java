@@ -100,20 +100,19 @@ public class QuestionsDB extends Questions implements CRUD {
     public static ArrayList<QuestionsDB> verifverrouillage1(int id_quest ) throws Exception {
         
         ArrayList<QuestionsDB> cherche = new ArrayList<QuestionsDB>();
-        String query = "SELECT * FROM QUESTIONS WHERE VERROUILLAGE='1' and ID_QUESTIONS=?";
+        String query = "SELECT * FROM QUESTIONS WHERE ID_QUESTIONS=?";
         
         PreparedStatement cstmt = null;
      try {
+    	 
+    	System.out.println("reception de "+id_quest); 
       cstmt = dbConnect.prepareStatement(query);
-      System.out.println("01");
       cstmt.setInt(1,id_quest);
       ResultSet rs = cstmt.executeQuery();
-      System.out.println("02");
       boolean trouve = false;
       QuestionsDB quest = new QuestionsDB();
-      System.out.println("03");
       while (rs.next()) {//PROBLEME
-    	  System.out.println("test1");
+    	trouve=true;  
       quest.id_questions = rs.getInt("ID_QUESTIONS");
        quest.questions = rs.getString("QUESTIONS");
        quest.verrouillage = rs.getBoolean("VERROUILLAGE");

@@ -42,4 +42,14 @@ public class Reponses {
 	public void setId_questions(int questions) {
 		this.id_questions = id_questions;
 	}
+
+	@Override
+	public String toString() {
+		return "Reponses [id_reponses=" + id_reponses + ", reponses="
+				+ reponses + ", id_questions=" + id_questions + "]";
+	}
+	
+	
+	
+	
 }

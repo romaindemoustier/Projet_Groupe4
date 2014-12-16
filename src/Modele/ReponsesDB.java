@@ -8,42 +8,42 @@ import java.util.ArrayList;
 
 public class ReponsesDB extends Reponses implements CRUD {
 
-    protected static Connection dbConnect = null;
+	protected static Connection dbConnect = null;
 
-    public ReponsesDB() {
+	public ReponsesDB() {
 
-    }
+	}
 
-    public ReponsesDB(int id_reponses) {
-        super(id_reponses);
-    }
+	public ReponsesDB(int id_reponses) {
+		super(id_reponses);
+	}
 
-    public ReponsesDB(String reponses, int id_questions) {
-        super(reponses, id_questions);
-    }
+	public ReponsesDB(String reponses, int id_questions) {
+		super(reponses, id_questions);
+	}
 
-    public static void setConnection(Connection C) {
-        dbConnect = C;
-    }
+	public static void setConnection(Connection C) {
+		dbConnect = C;
+	}
 
-    @Override
-    public void create() throws Exception {
-        CallableStatement c;
-        try {
-            String req = "call create_reponse(?,?,?)";
-            c = dbConnect.prepareCall(req);
-            c.setInt(1, id_reponses);
-            c.setString(2, reponses);
-            c.setInt(3, id_questions);
-            c.executeUpdate();
-            c.close();
-        } catch (Exception e) {
-            throw new Exception("Erreur " + e.getMessage());
-        }
-    }
+	@Override
+	public void create() throws Exception {
+		CallableStatement c;
+		try {
+			String req = "call create_reponse(?,?,?)";
+			c = dbConnect.prepareCall(req);
+			c.setInt(1, id_reponses);
+			c.setString(2, reponses);
+			c.setInt(3, id_questions);
+			c.executeUpdate();
+			c.close();
+		} catch (Exception e) {
+			throw new Exception("Erreur " + e.getMessage());
+		}
+	}
 
-    @Override
-    public void read() throws Exception {
+	@Override
+	public void read() throws Exception {
 		String query = "SELECT * FROM REPONSES WHERE ID_REPONSES=?";
 		PreparedStatement cstmt = null;
 		try {
@@ -66,72 +66,67 @@ public class ReponsesDB extends Reponses implements CRUD {
 		}
 	}
 
-    @Override
-    public void update() throws Exception {
-        CallableStatement c;
-        try {
-            String req = "call reponse_maj(?,?,?)";
-            c = dbConnect.prepareCall(req);
-            c.setInt(1, id_reponses);
-            c.setString(2, reponses);
-            c.setInt(3, id_questions);
-            c.executeUpdate();
-            c.close();
-        } catch (Exception e) {
-            throw new Exception("Erreur " + e.getMessage());
-        }
-    }
+	@Override
+	public void update() throws Exception {
+		CallableStatement c;
+		try {
+			String req = "call reponse_maj(?,?,?)";
+			c = dbConnect.prepareCall(req);
+			c.setInt(1, id_reponses);
+			c.setString(2, reponses);
+			c.setInt(3, id_questions);
+			c.executeUpdate();
+			c.close();
+		} catch (Exception e) {
+			throw new Exception("Erreur " + e.getMessage());
+		}
+	}
 
-    @Override
-    public void delete() throws Exception {
-        CallableStatement c;
-        try {
-            String req = "call reponse_supp(?)";
-            c = dbConnect.prepareCall(req);
-            c.setInt(1, id_reponses);
-            c.executeUpdate();
-            c.close();
-        } catch (Exception e) {
-            throw new Exception("Erreur " + e.getMessage());
-        }
-    }
-    
-    public static ArrayList<ReponsesDB> getreponse(int id_questions) throws Exception{
-    	ArrayList<ReponsesDB> retour= new ArrayList<ReponsesDB>();
-    	PreparedStatement cstmt=null;
-    	try{
-    	String query= "SELECT REPONSE WHERE ID_QUESTIONS=(?)";
-    	cstmt = dbConnect.prepareStatement(query);
-    	ResultSet rs=cstmt.executeQuery();
-    	if(rs.isBeforeFirst()){
-    	ReponsesDB rep;
-    	while(rs.next())
-    	{
-    	rep=new ReponsesDB();
-    	rep.setReponses(rs.getString("REPONSES"));
-    	retour.add(rep);
-    	}
-    	}
-    	else
-    	throw new Exception();
-    	return retour;
-    	}
-    	catch(Exception e)
-    	{
-    	throw new Exception("Erreur lors de la lecture"+e.getMessage());
-    	}
-    	finally
-    	{
-    	try
-    	{
-    	cstmt.close();
-    	}
-    	catch (Exception e)
-    	{
-    	}
-    	
-    	}
-    }
-    
+	@Override
+	public void delete() throws Exception {
+		CallableStatement c;
+		try {
+			String req = "call reponse_supp(?)";
+			c = dbConnect.prepareCall(req);
+			c.setInt(1, id_reponses);
+			c.executeUpdate();
+			c.close();
+		} catch (Exception e) {
+			throw new Exception("Erreur " + e.getMessage());
+		}
+	}
+
+	public static ArrayList<ReponsesDB> getreponse(int id_questions)
+			throws Exception {
+		ArrayList<ReponsesDB> retour = new ArrayList<ReponsesDB>();
+		String query = "SELECT REPONSES FROM REPONSES WHERE ID_QUESTIONS=?";
+
+		PreparedStatement cstmt = null;
+		try {
+			cstmt = dbConnect.prepareStatement(query);
+			cstmt.setInt(1, id_questions);
+			ResultSet rs = cstmt.executeQuery();
+			boolean trouve = false;
+			ReponsesDB rep = new ReponsesDB();
+			while (rs.next()) {
+				trouve = true;
+				rep.setReponses(rs.getString("REPONSES"));
+				retour.add(rep);
+			}
+			if (!trouve) {
+				throw new Exception("id inconnu");
+			} else {
+				return retour;
+			}
+		} catch (Exception e) {
+			throw new Exception("Erreur lors de la lecture" + e.getMessage());
+		} finally {
+			try {
+				cstmt.close();
+			} catch (Exception e) {
+			}
+
+		}
+	}
 
 }
