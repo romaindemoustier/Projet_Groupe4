@@ -127,7 +127,7 @@ public class Repondre_question extends ActionBarActivity {
 		protected void onPostExecute(Boolean result)
 		{
 			super.onPostExecute(result);
-			if (result)m
+			if (result)
 			{
 				ArrayList<String> liste_simple=new ArrayList<String>();
 				list = (ListView) findViewById(R.id.listView1);

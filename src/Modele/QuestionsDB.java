@@ -97,52 +97,85 @@ public class QuestionsDB extends Questions implements CRUD {
         }
     }
     
-    public ArrayList<QuestionsDB> verifverrouillage(String id_ex) throws Exception //utilisé lors de la connection à la BD d'un utilisateur
-	   {
-		    ArrayList<QuestionsDB> cherche = new ArrayList<QuestionsDB>();
-		    
-		    String req = "{?=call READ_QUESTION(?)}";
-	            
-		    CallableStatement cstmt = null;
-		    try
-		    {
-		       cstmt = dbConnect.prepareCall(req);
-	           cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
-		       cstmt.setString(2,id_ex);
-		       cstmt.executeQuery();
-	           ResultSet rs = (ResultSet)cstmt.getObject(1);
-		       boolean trouve = false;
-		    
-	           while(rs.next())
-	           {
-	              trouve=true;
-		          int id_questions = rs.getInt("ID_QUESTIONS");
-		       	  String questions = rs.getString("QUESTIONS");
-		       	  Boolean verrouillage =rs.getBoolean("VEROUILLAGE");
-		     	  int professeur = rs.getInt("PROFESSEUR");
-		       }
-		    
-	           if(!trouve)
-	           {
-	        	  throw new Exception("id inconnu");
-	           }
-	           else 
-	           {
-	           	  return cherche;
-	           }
-		    }
-		    catch(Exception e)
-		    {
-	            throw new Exception("Erreur de lecture "+e.getMessage());
-	        }
-	        finally
-	        {
-	           try
-	           {
-	              cstmt.close();
-	           }
-	           catch (Exception e){}
-	        }
-	  }
+    public static ArrayList<QuestionsDB> verifverrouillage1(int id_quest ) throws Exception {
+        
+        ArrayList<QuestionsDB> cherche = new ArrayList<QuestionsDB>();
+        String query = "SELECT * FROM QUESTIONS WHERE VERROUILLAGE='1' and ID_QUESTIONS=?";
+        
+        PreparedStatement cstmt = null;
+     try {
+      cstmt = dbConnect.prepareStatement(query);
+      System.out.println("01");
+      cstmt.setInt(1,id_quest);
+      ResultSet rs = cstmt.executeQuery();
+      System.out.println("02");
+      boolean trouve = false;
+      QuestionsDB quest = new QuestionsDB();
+      System.out.println("03");
+      while (rs.next()) {//PROBLEME
+    	  System.out.println("test1");
+      quest.id_questions = rs.getInt("ID_QUESTIONS");
+       quest.questions = rs.getString("QUESTIONS");
+       quest.verrouillage = rs.getBoolean("VERROUILLAGE");
+       quest.professeur = rs.getInt("PROFESSEUR");
+       cherche.add(quest);
+      }
+      if(!trouve){throw new Exception("id inconnu");}
+               else{return cherche;}
+
+     } catch (Exception e) {
+      throw new Exception("Erreur " + e.getMessage());
+     } finally {
+      try {
+       cstmt.close();
+      } catch (Exception e) {
+
+      }
+     }
+    }
+       
+       /*public ArrayList<QuestionsDB> verifverrouillage(Boolean verif, String id_questions) throws Exception //utilisé lors de la connection à la BD d'un utilisateur
+       {
+         ArrayList<QuestionsDB> cherche = new ArrayList<QuestionsDB>();
+         
+         String req = "{?=call READ_QUESTION_VERROUILLAGE(?,?)}";      
+         CallableStatement cstmt = null;
+         try
+         {
+            cstmt = dbConnect.prepareCall(req);System.out.println("OK11");
+               cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
+            cstmt.setString(2,id_questions);System.out.println("OK12");
+            cstmt.executeQuery();System.out.println("OK1");//LE PROBLEME EST ICI
+               ResultSet rs = (ResultSet)cstmt.getObject(1);
+            boolean trouve = false;
+            System.out.println("OK2");
+               while(rs.next())
+               {
+                  trouve=true;
+               /*int id_question = rs.getInt("ID_QUESTIONS");
+               String questions = rs.getString("QUESTIONS");
+               Boolean verrouillage =rs.getBoolean("VEROUILLAGE");
+             int professeur = rs.getInt("PROFESSEUR");
+            }
+              
+               if(!trouve){throw new Exception("id inconnu");}
+               else{ System.out.println("OK3");return cherche;}
+               
+               
+               
+         }
+         catch(Exception e)
+         {
+                throw new Exception("Erreur de lecture "+e.getMessage());
+            }
+            finally
+            {
+               try
+               {
+                  cstmt.close();
+               }
+               catch (Exception e){}
+            }
+      }*/
 
 }

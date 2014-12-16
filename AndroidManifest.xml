@@ -24,15 +24,16 @@
         <activity
             android:name=".Rentrer_id"
             android:label="@string/title_activity_rentrer_id" >
-        </activity>
-        <activity
-            android:name=".Repondre_question"
-            android:label="@string/title_activity_repondre_question" >
-                <intent-filter>
+               <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".Repondre_question"
+            android:label="@string/title_activity_repondre_question" >
+             
         </activity>
         <activity
             android:name=".Stat"
