@@ -133,48 +133,6 @@ public class QuestionsDB extends Questions implements CRUD {
      }
     }
        
-       /*public ArrayList<QuestionsDB> verifverrouillage(Boolean verif, String id_questions) throws Exception //utilisé lors de la connection à la BD d'un utilisateur
-       {
-         ArrayList<QuestionsDB> cherche = new ArrayList<QuestionsDB>();
-         
-         String req = "{?=call READ_QUESTION_VERROUILLAGE(?,?)}";      
-         CallableStatement cstmt = null;
-         try
-         {
-            cstmt = dbConnect.prepareCall(req);System.out.println("OK11");
-               cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
-            cstmt.setString(2,id_questions);System.out.println("OK12");
-            cstmt.executeQuery();System.out.println("OK1");//LE PROBLEME EST ICI
-               ResultSet rs = (ResultSet)cstmt.getObject(1);
-            boolean trouve = false;
-            System.out.println("OK2");
-               while(rs.next())
-               {
-                  trouve=true;
-               /*int id_question = rs.getInt("ID_QUESTIONS");
-               String questions = rs.getString("QUESTIONS");
-               Boolean verrouillage =rs.getBoolean("VEROUILLAGE");
-             int professeur = rs.getInt("PROFESSEUR");
-            }
-              
-               if(!trouve){throw new Exception("id inconnu");}
-               else{ System.out.println("OK3");return cherche;}
-               
-               
-               
-         }
-         catch(Exception e)
-         {
-                throw new Exception("Erreur de lecture "+e.getMessage());
-            }
-            finally
-            {
-               try
-               {
-                  cstmt.close();
-               }
-               catch (Exception e){}
-            }
-      }*/
+
 
 }

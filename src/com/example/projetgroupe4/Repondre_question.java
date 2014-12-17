@@ -17,6 +17,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -26,6 +28,7 @@ public class Repondre_question extends ActionBarActivity {
 	private Connection con=null;
 	private ArrayList<ReponsesDB> rep_liste;
 	private ListView list=null;
+	private String id_intent;//p-e int
 
 
 
@@ -107,10 +110,11 @@ public class Repondre_question extends ActionBarActivity {
 			}
 
 			try{
-				//private int id_intent;
+				
 				Intent in = getIntent();
-				//id_intent=in.getIntExtra(ID_QUESTIONS);
-				rep_liste= ReponsesDB.getreponse(1);
+				id_intent=in.getStringExtra("ID_QUESTIONS");
+				Log.d("id : ", id_intent);
+				rep_liste= ReponsesDB.getreponse(Integer.parseInt(id_intent));
 				for(int i=0; i<rep_liste.size();i++)
 				{
 					Log.d("ELEMENT","Elt"+i+"est: "+rep_liste.get(i).toString());
@@ -140,9 +144,29 @@ public class Repondre_question extends ActionBarActivity {
 					it.next();
 						System.out.println("La problème arrive5");
 						liste_simple.add(rep_liste.get(i).getReponses());
+						i++;
 					}
 					ArrayAdapter<String> adapter = new ArrayAdapter<String>(Repondre_question.this,android.R.layout.simple_list_item_1, liste_simple);
 					list.setAdapter(adapter);
+					
+					
+					
+					
+					list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+						
+						public void onItemClick(AdapterView<?> parent, final View view, int position, long id)
+						{
+							Intent i = new Intent(Repondre_question.this,Stat.class);
+							 startActivity(i);
+							 finish();
+							
+						}
+						
+						
+						
+					});
+
+					
 
 			}
 		}

@@ -99,7 +99,7 @@ public class ReponsesDB extends Reponses implements CRUD {
 	public static ArrayList<ReponsesDB> getreponse(int id_questions)
 			throws Exception {
 		ArrayList<ReponsesDB> retour = new ArrayList<ReponsesDB>();
-		String query = "SELECT REPONSES FROM REPONSES WHERE ID_QUESTIONS=?";
+		String query = "SELECT * FROM REPONSES WHERE ID_QUESTIONS=?";
 
 		PreparedStatement cstmt = null;
 		try {
@@ -107,11 +107,19 @@ public class ReponsesDB extends Reponses implements CRUD {
 			cstmt.setInt(1, id_questions);
 			ResultSet rs = cstmt.executeQuery();
 			boolean trouve = false;
-			ReponsesDB rep = new ReponsesDB();
+			//ReponsesDB rep = new ReponsesDB();
+			if (rs.isBeforeFirst())
+			{
+	        ReponsesDB rep;
 			while (rs.next()) {
 				trouve = true;
+				rep=new ReponsesDB();
 				rep.setReponses(rs.getString("REPONSES"));
+				for(int i=0; i<retour.size();i++)
+				{System.out.println(retour.get(i).id_reponses);}
+				
 				retour.add(rep);
+			}
 			}
 			if (!trouve) {
 				throw new Exception("id inconnu");

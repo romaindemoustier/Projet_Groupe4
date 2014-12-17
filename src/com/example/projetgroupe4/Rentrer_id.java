@@ -32,7 +32,8 @@ public class Rentrer_id extends ActionBarActivity {
 	ArrayList<QuestionsDB> trouve = new ArrayList<QuestionsDB> ();
 	QuestionsDB questions = new QuestionsDB();
 
-	public static final String ID_QUESTIONS="id_questions";
+	public final String ID_QUESTIONS="id_questions";
+	//public final String QUESTIONS="questions";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -134,18 +135,20 @@ public class Rentrer_id extends ActionBarActivity {
 					trouve= questions.verifverrouillage1(id_ex);
 					
 				
-					questions = trouve.get(0);Log.d("kffdjk",trouve.get(0).getQuestions());
+					questions = trouve.get(0);
 					
 					if(!questions.getVerrouillage())
 					{
 						resultat ="La question est verrouillée !";
 						return false;
 					}
+					
+					
 				}
 				catch(Exception e)
 				{
 					    Log.d("dssd",e.getMessage());
-						resultat="boom";
+					    resultat ="La question n'existe pas !";
 						return false;
 				}
 
@@ -167,7 +170,8 @@ public class Rentrer_id extends ActionBarActivity {
 
 				Toast.makeText(Rentrer_id.this,"ID Valide !",Toast.LENGTH_SHORT).show();
 				Intent i = new Intent(Rentrer_id.this,Repondre_question.class); 
-				i.putExtra(ID_QUESTIONS, id_ex); 
+				i.putExtra("ID_QUESTIONS",""+id_ex); 
+				//i.putExtra(QUESTIONS,questions.getQuestions() ); 
 				startActivity(i);
 				finish();
 			} 
